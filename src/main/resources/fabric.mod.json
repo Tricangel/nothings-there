@@ -1,0 +1,36 @@
+{
+	"schemaVersion": 1,
+	"id": "nothings-there",
+	"version": "${version}",
+	"name": "Entity Lib",
+	"description": "A library mod that helps with entities",
+	"authors": [
+		""
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"bee.insanity.NothingsThere"
+		],
+		"fabric-datagen": [
+			"bee.insanity.NothingsThereDataGenerator"
+		],
+		"client": [
+			"bee.insanity.NothingsThereClient"
+		]
+	},
+	"mixins": [
+		"nothings-there.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.18.4",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
