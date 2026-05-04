@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "nothings-there:block/bleed_amethyst_cluster",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "nothings-there:block/bleed_amethyst_cluster",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "nothings-there:block/bleed_amethyst_cluster",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "nothings-there:block/bleed_amethyst_cluster",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "nothings-there:block/bleed_amethyst_cluster"
+    },
+    "facing=west": {
+      "model": "nothings-there:block/bleed_amethyst_cluster",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

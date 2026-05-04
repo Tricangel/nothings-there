@@ -18,7 +18,6 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ItemScatterer;
-import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
@@ -27,7 +26,6 @@ import java.util.List;
 
 public class TheWatcher extends MobEntity {
     private static final TrackedData<Integer> ANGERTIME = DataTracker.registerData(TheWatcher.class, TrackedDataHandlerRegistry.INTEGER);
-    private static final TrackedData<Integer> HEADY = DataTracker.registerData(TheWatcher.class, TrackedDataHandlerRegistry.INTEGER);
 
     public TheWatcher(EntityType<? extends MobEntity> entityType, World world) {
         super(entityType, world);
@@ -61,6 +59,7 @@ public class TheWatcher extends MobEntity {
         entities.forEach(livingEntity -> {
                     if (livingEntity.getType() == InsanityMobs.THE_WATCHER) {
                         this.remove(RemovalReason.DISCARDED);
+                        world.getServer().getPlayerManager();
                     }
                 });
 
@@ -118,20 +117,11 @@ public class TheWatcher extends MobEntity {
     @Override
     protected void initDataTracker(DataTracker.Builder builder) {
         super.initDataTracker(builder);
-        builder.add(HEADY, 0);
         builder.add(ANGERTIME, 0);
-    }
-
-    protected void setHeadY(int headY) {
-        this.dataTracker.set(HEADY, headY);
     }
 
     protected void setAngertime(int angertime) {
         this.dataTracker.set(ANGERTIME, angertime);
-    }
-
-    protected int getHeadY() {
-        return this.dataTracker.get(HEADY);
     }
 
     protected int getAngerTime() {

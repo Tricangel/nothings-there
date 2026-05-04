@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "nothings-there:block/medium_bleed_amethyst_bud"
+  }
+}

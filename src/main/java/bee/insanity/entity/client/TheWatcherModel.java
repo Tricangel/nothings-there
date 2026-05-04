@@ -11,7 +11,6 @@ public class TheWatcherModel extends EntityModel<TheWatcherRenderState> {
 
     public final ModelPart body;
     public final ModelPart head;
-    public final ModelPart evilhead;
     public final ModelPart right_arm;
     public final ModelPart left_arm;
     public final ModelPart right_leg;
@@ -21,7 +20,6 @@ public class TheWatcherModel extends EntityModel<TheWatcherRenderState> {
         super(root);
         this.body = root.getChild("body");
         this.head = root.getChild("head");
-        this.evilhead = root.getChild("evil_head");
         this.right_arm = root.getChild("right_arm");
         this.left_arm = root.getChild("right_arm");
         this.right_leg = root.getChild("right_leg");
@@ -29,40 +27,28 @@ public class TheWatcherModel extends EntityModel<TheWatcherRenderState> {
 
 
     }
+
+
     public static TexturedModelData getTexturedModelData() {
         ModelData modelData = new ModelData();
         ModelPartData modelPartData = modelData.getRoot();
-        ModelPartData head = modelPartData.addChild("head", ModelPartBuilder.create().uv(0, 0).cuboid(-4.0F, -20.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(0.0F))
-                .uv(32, 0).cuboid(-4.0F, -20.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(0.5F)), ModelTransform.rotation(0.0F, 13.0F, 0.0F));
+        ModelPartData head = modelPartData.addChild("head", ModelPartBuilder.create().uv(0, 0).cuboid(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(0.0F))
+                .uv(32, 0).cuboid(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(0.5F)), ModelTransform.rotation(0.0F, 0.0F, 0.0F));
 
-        ModelPartData evil_head = modelPartData.addChild("evil_head", ModelPartBuilder.create().uv(0, 0).cuboid(-4.0F, -25.0F, -4.0F, 8.0F, 2.0F, 8.0F, new Dilation(-0.01F))
-                .uv(0, 0).cuboid(2.0F, -26.98F, -4.0F, 2.0F, 2.0F, 2.0F, new Dilation(-0.01F)), ModelTransform.rotation(0.0F, 24.0F, 0.0F));
+        ModelPartData body = modelPartData.addChild("body", ModelPartBuilder.create().uv(16, 16).cuboid(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, new Dilation(0.0F))
+                .uv(16, 32).cuboid(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, new Dilation(0.25F)), ModelTransform.rotation(0.0F, 0.0F, 0.0F));
 
-        ModelPartData middle_r1 = evil_head.addChild("middle_r1", ModelPartBuilder.create().uv(0, 0).cuboid(2.0F, -24.98F, -4.0F, 2.0F, 1.0F, 2.0F, new Dilation(-0.01F)), ModelTransform.of(3.0F, -1.0F, 0.0F, 0.0F, 1.5708F, 0.0F));
+        ModelPartData left_arm = modelPartData.addChild("left_arm", ModelPartBuilder.create().uv(32, 48).cuboid(4.0F, 0.0F, -2.0F, 3.0F, 12.0F, 4.0F, new Dilation(0.0F))
+                .uv(48, 48).cuboid(4.0F, 0.0F, -2.0F, 3.0F, 12.0F, 4.0F, new Dilation(0.25F)), ModelTransform.rotation(0.0F, 0.0F, 0.0F));
 
-        ModelPartData leftattachments_r1 = evil_head.addChild("leftattachments_r1", ModelPartBuilder.create().uv(0, 0).cuboid(2.0F, -25.98F, -4.0F, 2.0F, 2.0F, 2.0F, new Dilation(-0.01F)), ModelTransform.of(0.0F, -1.0F, 0.0F, 0.0F, 1.5708F, 0.0F));
+        ModelPartData right_arm = modelPartData.addChild("right_arm", ModelPartBuilder.create().uv(40, 16).cuboid(-7.0F, 0.0F, -2.0F, 3.0F, 12.0F, 4.0F, new Dilation(0.0F))
+                .uv(40, 32).cuboid(-7.0F, 0.0F, -2.0F, 3.0F, 12.0F, 4.0F, new Dilation(0.25F)), ModelTransform.rotation(0.0F, 0.0F, 0.0F));
 
-        ModelPartData backleft_r1 = evil_head.addChild("backleft_r1", ModelPartBuilder.create().uv(0, 0).cuboid(1.0F, -25.98F, -4.0F, 3.0F, 2.0F, 2.0F, new Dilation(-0.01F)), ModelTransform.of(0.0F, -1.0F, 0.0F, 0.0F, 3.1416F, 0.0F));
+        ModelPartData left_leg = modelPartData.addChild("left_leg", ModelPartBuilder.create().uv(16, 48).cuboid(0.0F, 12.0F, -2.0F, 4.0F, 12.0F, 4.0F, new Dilation(0.0F))
+                .uv(0, 48).cuboid(0.0F, 12.0F, -2.0F, 4.0F, 12.0F, 4.0F, new Dilation(0.25F)), ModelTransform.rotation(0.0F, 0.0F, 0.0F));
 
-        ModelPartData backrightupper_r1 = evil_head.addChild("backrightupper_r1", ModelPartBuilder.create().uv(0, 0).cuboid(4.0F, -25.96F, -4.0F, 0.0F, 2.0F, 1.0F, new Dilation(-0.01F)), ModelTransform.of(-7.0F, -3.0F, 0.0F, 0.0F, -1.5708F, 0.0F));
-
-        ModelPartData backrightupper_r2 = evil_head.addChild("backrightupper_r2", ModelPartBuilder.create().uv(0, 0).cuboid(4.0F, -25.96F, -4.0F, 0.0F, 2.0F, 1.0F, new Dilation(-0.01F))
-                .uv(0, 0).cuboid(2.0F, -23.98F, -4.0F, 2.0F, 2.0F, 3.0F, new Dilation(-0.01F)), ModelTransform.of(0.0F, -3.0F, 0.0F, 0.0F, -1.5708F, 0.0F));
-
-        ModelPartData body = modelPartData.addChild("body", ModelPartBuilder.create().uv(16, 16).cuboid(-4.0F, -24.0F, -2.0F, 8.0F, 12.0F, 4.0F, new Dilation(0.0F))
-                .uv(16, 32).cuboid(-4.0F, -24.0F, -2.0F, 8.0F, 12.0F, 4.0F, new Dilation(0.25F)), ModelTransform.rotation(0.0F, 24.0F, 0.0F));
-
-        ModelPartData left_arm = modelPartData.addChild("left_arm", ModelPartBuilder.create().uv(32, 48).cuboid(4.0F, -24.0F, -2.0F, 3.0F, 12.0F, 4.0F, new Dilation(0.0F))
-                .uv(48, 48).cuboid(4.0F, -24.0F, -2.0F, 3.0F, 12.0F, 4.0F, new Dilation(0.25F)), ModelTransform.rotation(0.0F, 24.0F, 0.0F));
-
-        ModelPartData right_arm = modelPartData.addChild("right_arm", ModelPartBuilder.create().uv(40, 16).cuboid(-7.0F, -24.0F, -2.0F, 3.0F, 12.0F, 4.0F, new Dilation(0.0F))
-                .uv(40, 32).cuboid(-7.0F, -24.0F, -2.0F, 3.0F, 12.0F, 4.0F, new Dilation(0.25F)), ModelTransform.rotation(0.0F, 24.0F, 0.0F));
-
-        ModelPartData left_leg = modelPartData.addChild("left_leg", ModelPartBuilder.create().uv(16, 48).cuboid(0.0F, -12.0F, -2.0F, 4.0F, 12.0F, 4.0F, new Dilation(0.0F))
-                .uv(0, 48).cuboid(0.0F, -12.0F, -2.0F, 4.0F, 12.0F, 4.0F, new Dilation(0.25F)), ModelTransform.rotation(0.0F, 24.0F, 0.0F));
-
-        ModelPartData right_leg = modelPartData.addChild("right_leg", ModelPartBuilder.create().uv(0, 32).cuboid(-4.0F, -12.0F, -2.0F, 4.0F, 12.0F, 4.0F, new Dilation(0.25F))
-                .uv(0, 16).cuboid(-4.0F, -12.0F, -2.0F, 4.0F, 12.0F, 4.0F, new Dilation(0.0F)), ModelTransform.rotation(0.0F, 24.0F, 0.0F));
+        ModelPartData right_leg = modelPartData.addChild("right_leg", ModelPartBuilder.create().uv(0, 32).cuboid(-4.0F, 12.0F, -2.0F, 4.0F, 12.0F, 4.0F, new Dilation(0.25F))
+                .uv(0, 16).cuboid(-4.0F, 12.0F, -2.0F, 4.0F, 12.0F, 4.0F, new Dilation(0.0F)), ModelTransform.rotation(0.0F, 0.0F, 0.0F));
         return TexturedModelData.of(modelData, 64, 64);
 
     }
@@ -72,11 +58,6 @@ public class TheWatcherModel extends EntityModel<TheWatcherRenderState> {
         this.head.pitch = (state.pitch * ((float)Math.PI / 180F));
         this.head.yaw = state.relativeHeadYaw * ((float)Math.PI / 180F);
     }
-
-    public void seperateHeads(TheWatcherRenderState state) {
-        this.head.originY = state.getHeadY();
-    }
-
 
 
 }

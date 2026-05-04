@@ -3,7 +3,14 @@
   "package": "bee.insanity.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "ItemEntityMixin",
+    "AbstractBlockMixin",
+    "EntityMixin",
+    "FoodComponentMixin",
+    "ItemMixin",
+    "ItemStackEntityRenderStateMixin",
+    "MaceItemMixin",
+    "PlayerManagerMixin",
+    "ProjectileEntityMixin",
     "SummonCommandMixin"
   ],
   "injectors": {
@@ -13,5 +20,7 @@
     "requireAnnotations": true
   },
   "client": [
+    "client.HeldItemRendererMixin",
+    "client.LivingEntityMixin"
   ]
 }

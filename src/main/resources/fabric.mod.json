@@ -22,11 +22,20 @@
 		],
 		"client": [
 			"bee.insanity.NothingsThereClient"
+		],
+		"cardinal-components-entity": [
+			"bee.insanity.registry.InsanityEntityComponents"
 		]
 	},
 	"mixins": [
 		"nothings-there.mixins.json"
 	],
+	"custom": {
+		"cardinal-components": [
+			"nothings-there:renderasitem"
+
+		]
+	},
 	"depends": {
 		"fabricloader": ">=0.18.4",
 		"minecraft": "~1.21.11",

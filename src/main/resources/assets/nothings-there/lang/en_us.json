@@ -1,4 +1,6 @@
 {
   "entity.nothings-there.the_watcher": "The Watcher",
-  "title.nothings-there.config.title": "§kInsanity Config"
+  "item.nothings-there.demonite_shard": "Otherworldly Shard",
+  "sounds.nothings-there:bomb.tick": "Demonite Ticks",
+  "sounds.nothings-there:bomb.explode": "Demonite Explodes"
 }
