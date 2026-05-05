@@ -1,62 +1,51 @@
 package bee.insanity;
 
-import bee.insanity.entity.InsanityEntitySpawns;
-import bee.insanity.entity.TheWatcher;
-import bee.insanity.item.recipe.DemoniteRecipe;
-import bee.insanity.registry.*;
+import bee.insanity.cca.BooleanComponent;
+import bee.insanity.packet.FourthDimensionC2SPacket;
+import bee.insanity.registry.ModEntityComponents;
+import bee.insanity.registry.ModItems;
+import bee.insanity.registry.ModKeybinds;
+import bee.insanity.registry.ModTags;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.damage.DamageType;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.recipe.SpecialCraftingRecipe;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class NothingsThere implements ModInitializer {
-	public static final String MOD_ID = "nothings-there";
+	public static final String MOD_ID = "insanity";
 
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	@Override
 	public void onInitialize() {
-		InsanityMobs.init();
-		InsanityItems.init();
-		InsanityBlocks.init();
-		InsanityEffects.init();
-		InsanityComponents.init();
-		InsanitySounds.init();
+		ModItems.init();
+		ModKeybinds.init();
+		ModTags.init();
+		ModEntityComponents.init();
 
-		Registry.register(Registries.RECIPE_TYPE, Identifier.of(MOD_ID, "demonite_crafting"), DemoniteRecipe.DemoniteRecipeType.INSTANCE);
-		Registry.register(Registries.RECIPE_SERIALIZER, Identifier.of(MOD_ID, "demonite_crafting"), new SpecialCraftingRecipe.SpecialRecipeSerializer<DemoniteRecipe>(DemoniteRecipe::new));
+		PayloadTypeRegistry.serverboundPlay().register(FourthDimensionC2SPacket.TYPE, FourthDimensionC2SPacket.CODEC);
 
-		FabricDefaultAttributeRegistry.register(InsanityMobs.THE_WATCHER, TheWatcher.createMobAttributes());
-		InsanityEntitySpawns.addSpawns();
 
+		ServerPlayNetworking.registerGlobalReceiver(FourthDimensionC2SPacket.TYPE, (packet, context) -> {
+			Entity entity = context.player().level().getEntity(packet.id());
+
+			if (entity instanceof Player player) {
+				BooleanComponent comp = ModEntityComponents.IN_FOURTH_DIM.get(player);
+				comp.setBool(!comp.getBool());
+				ModEntityComponents.IN_FOURTH_DIM.sync(player);
+				player.sendOverlayMessage(Component.literal(String.valueOf(ModEntityComponents.IN_FOURTH_DIM.get(player).getBool())));
+			}
+
+		});
 	}
 
-
-	public static boolean getDemoniteNearby(BlockPos pos, World world) {
-
-		for (int n = -4; n < 6; n++) {
-			for (int e = -4; e < 6; e++) {
-				for (int u = -4; u < 6; u++) {
-					if (world.getBlockState(pos.up(u).north(n).east(e)).getBlock().equals(InsanityBlocks.DEMONITE_BLOCK)) {
-						return true;
-					}
-				}
-			}
-		}
-		return false;
-
+	public static Identifier id(String name) {
+		return Identifier.fromNamespaceAndPath(MOD_ID, name);
 	}
 
 }

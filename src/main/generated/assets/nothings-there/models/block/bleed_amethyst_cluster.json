@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "nothings-there:block/bleed_amethyst_cluster"
-  }
-}

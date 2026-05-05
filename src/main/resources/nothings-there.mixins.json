@@ -1,17 +1,8 @@
 {
   "required": true,
   "package": "bee.insanity.mixin",
-  "compatibilityLevel": "JAVA_21",
+  "compatibilityLevel": "JAVA_25",
   "mixins": [
-    "AbstractBlockMixin",
-    "EntityMixin",
-    "FoodComponentMixin",
-    "ItemMixin",
-    "ItemStackEntityRenderStateMixin",
-    "MaceItemMixin",
-    "PlayerManagerMixin",
-    "ProjectileEntityMixin",
-    "SummonCommandMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -20,7 +11,8 @@
     "requireAnnotations": true
   },
   "client": [
-    "client.HeldItemRendererMixin",
-    "client.LivingEntityMixin"
+    "FontMixin",
+    "client.AvatarRendererMixin",
+    "client.LivingEntityRendererMixin"
   ]
 }

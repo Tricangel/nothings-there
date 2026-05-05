@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "nothings-there:block/large_bleed_amethyst_bud"
-  }
-}

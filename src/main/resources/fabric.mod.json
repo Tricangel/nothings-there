@@ -1,18 +1,15 @@
 {
 	"schemaVersion": 1,
-	"id": "nothings-there",
-	"version": "${version}",
-	"name": "Entity Lib",
-	"description": "A library mod that helps with entities",
+	"id": "insanity",
+	"version": "§k§l1§r.§k§l0§r.§k§l0",
+	"name": "§k Insanity",
+	"description": "§k Its just getting crazier",
 	"authors": [
-		""
+		"You"
 	],
-	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
-	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"environment": "*",
+	"accessWidener": "insanity.classtweaker",
 	"entrypoints": {
 		"main": [
 			"bee.insanity.NothingsThere"
@@ -23,8 +20,8 @@
 		"client": [
 			"bee.insanity.NothingsThereClient"
 		],
-		"cardinal-components-entity": [
-			"bee.insanity.registry.InsanityEntityComponents"
+		"cardinal-components": [
+			"bee.insanity.registry.ModEntityComponents"
 		]
 	},
 	"mixins": [
@@ -32,14 +29,13 @@
 	],
 	"custom": {
 		"cardinal-components": [
-			"nothings-there:renderasitem"
-
+			"insanity:in_fourth_dim"
 		]
 	},
 	"depends": {
-		"fabricloader": ">=0.18.4",
-		"minecraft": "~1.21.11",
-		"java": ">=21",
+		"fabricloader": ">=0.19.2",
+		"minecraft": "~26.1.2",
+		"java": ">=25",
 		"fabric-api": "*"
 	}
 }
