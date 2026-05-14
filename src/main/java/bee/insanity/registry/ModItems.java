@@ -1,6 +1,7 @@
 package bee.insanity.registry;
 
 import bee.insanity.NothingsThere;
+import bee.insanity.item.DemoniteShard;
 import bee.insanity.item.ModArmorMaterials;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -38,6 +39,9 @@ public class ModItems {
             new Item.Properties().humanoidArmor(ModArmorMaterials.DEMONITE_INSTANCE, ArmorType.BOOTS)
                     .durability(ArmorType.BOOTS.getDurability(ModArmorMaterials.DEMONITE_BASE_DURABILITY))
     );
+
+    public static final Item DEMONITE_SHARD = register("demonite_shard",
+            DemoniteShard::new, new Item.Properties());
 
     public static <T extends Item> T register(String name, Function<Item.Properties, T> itemFactory, Item.Properties settings) {
         ResourceKey<Item> itemKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(NothingsThere.MOD_ID, name));

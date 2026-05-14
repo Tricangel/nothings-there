@@ -13,6 +13,7 @@
   "client": [
     "FontMixin",
     "client.AvatarRendererMixin",
+    "client.ContainerScreenMixin",
     "client.LivingEntityRendererMixin"
   ]
 }
