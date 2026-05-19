@@ -31,6 +31,7 @@ public class AvatarRendererMixin {
     @Inject(at = @At("HEAD"), method = "scale(Lnet/minecraft/client/renderer/entity/state/AvatarRenderState;Lcom/mojang/blaze3d/vertex/PoseStack;)V", cancellable = true)
     private void wawa(AvatarRenderState state, PoseStack poseStack, CallbackInfo ci) {
             if (state.getData(FourthDimRenderState.KEY).inFourthDim) {
+
                 poseStack.scale(0, 0, 0);
                 ci.cancel();
             }

@@ -9,6 +9,7 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.entity.animal.equine.Variant;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,9 +23,9 @@ public class ContainerScreenMixin {
 
     @ModifyExpressionValue(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/inventory/Slot;getItem()Lnet/minecraft/world/item/ItemStack;"), method = "extractSlot")
     private ItemStack wawa(ItemStack original) {
-        if (original.getItem() instanceof DemoniteShard && Minecraft.getInstance().player != null) {
+        if (original.getItem() instanceof DemoniteShard && Minecraft.getInstance().player != null && original.get(DataComponents.HORSE_VARIANT) != null && original.get(DataComponents.HORSE_VARIANT) == Variant.CHESTNUT) {
             LocalPlayer player = Minecraft.getInstance().player;
-            List<Item> list = player.registryAccess().getOrThrow(Registries.ITEM).value().stream().toList();
+            List<Item> list = player.registryAccess().lookupOrThrow(Registries.ITEM).stream().toList();
             ItemStack newStack = list.get(new Random().nextInt(0, list.size())).getDefaultInstance();
 
             if (player.tickCount % 15 == 0) {

@@ -2,10 +2,7 @@ package bee.insanity;
 
 import bee.insanity.cca.BooleanComponent;
 import bee.insanity.packet.FourthDimensionC2SPacket;
-import bee.insanity.registry.ModEntityComponents;
-import bee.insanity.registry.ModItems;
-import bee.insanity.registry.ModKeybinds;
-import bee.insanity.registry.ModTags;
+import bee.insanity.registry.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -16,8 +13,12 @@ import net.minecraft.world.entity.player.Player;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class NothingsThere implements ModInitializer {
 	public static final String MOD_ID = "insanity";
+	public static List<Player> players = new ArrayList<>();
 
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
@@ -27,6 +28,7 @@ public class NothingsThere implements ModInitializer {
 		ModKeybinds.init();
 		ModTags.init();
 		ModEntityComponents.init();
+		ModComponents.init();
 
 		PayloadTypeRegistry.serverboundPlay().register(FourthDimensionC2SPacket.TYPE, FourthDimensionC2SPacket.CODEC);
 

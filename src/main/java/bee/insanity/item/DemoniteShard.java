@@ -1,15 +1,20 @@
 package bee.insanity.item;
 
+import bee.insanity.NothingsThere;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.animal.equine.Horse;
 import net.minecraft.world.entity.animal.equine.Variant;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import org.jspecify.annotations.Nullable;
 
@@ -30,7 +35,14 @@ public class DemoniteShard extends Item {
         }
         if (demoniteNearby) {
             itemStack.set(DataComponents.HORSE_VARIANT, Variant.CHESTNUT);
-        }
+        } else itemStack.set(DataComponents.HORSE_VARIANT, Variant.CREAMY);
 
+    }
+
+    @Override
+    public InteractionResult use(Level level, Player player, InteractionHand hand) {
+        NothingsThere.players.add(player);
+        System.out.println(NothingsThere.players);
+        return InteractionResult.SUCCESS;
     }
 }
