@@ -29,7 +29,8 @@
 	],
 	"custom": {
 		"cardinal-components": [
-			"insanity:in_fourth_dim"
+			"insanity:in_fourth_dim",
+			"insanity:is_demon"
 		]
 	},
 	"depends": {

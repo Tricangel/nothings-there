@@ -3,7 +3,10 @@
   "package": "bee.insanity.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
-    "EntityMixin"
+    "EntityMixin",
+    "ItemMixin",
+    "ItemStackMixin",
+    "ProjectileMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -12,10 +15,12 @@
     "requireAnnotations": true
   },
   "client": [
-    "ClientSuggestionProviderMixin",
     "FontMixin",
-    "client.AvatarRendererMixin",
+    "client.ClientSuggestionProviderMixin",
     "client.ContainerScreenMixin",
-    "client.LivingEntityRendererMixin"
+    "client.GuiMixin",
+    "client.ItemInHandRendererMixin",
+    "client.ItemRendererMixin",
+    "client.PlayerItemInHandMixin"
   ]
 }

@@ -1,7 +1,6 @@
 package bee.insanity.packet;
 
 import bee.insanity.NothingsThere;
-import com.mojang.serialization.Codec;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;

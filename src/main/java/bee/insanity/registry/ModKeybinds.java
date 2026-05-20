@@ -21,6 +21,14 @@ public class ModKeybinds {
                     CATEGORY
             ));
 
+    public static final  KeyMapping becomeEvil = KeyMappingHelper.registerKeyMapping(
+            new KeyMapping(
+                    "key.insanity.evil",
+                    InputConstants.Type.KEYSYM,
+                    GLFW.GLFW_KEY_G,
+                    CATEGORY
+            ));
+
     public static void init() {}
 
 }

@@ -1,19 +1,14 @@
-package bee.insanity.mixin;
+package bee.insanity.mixin.client;
 
 import bee.insanity.NothingsThere;
-import bee.insanity.registry.ModItems;
-import bee.insanity.registry.ModTags;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import net.fabricmc.fabric.api.lookup.v1.item.ItemApiLookup;
 import net.minecraft.client.multiplayer.ClientSuggestionProvider;
 import net.minecraft.client.multiplayer.PlayerInfo;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 import java.util.Collection;
-import java.util.HashSet;
 
 @Mixin(ClientSuggestionProvider.class)
 public class ClientSuggestionProviderMixin {

@@ -1,9 +1,7 @@
 package bee.insanity.cca;
 
-import bee.insanity.registry.ModEntityComponents;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
-import org.ladysnake.cca.api.v3.component.sync.AutoSyncedComponent;
 import org.ladysnake.cca.api.v8.component.CardinalComponent;
 
 public class BooleanComponent implements CardinalComponent {

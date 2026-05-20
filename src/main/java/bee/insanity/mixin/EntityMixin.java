@@ -16,7 +16,7 @@ public class EntityMixin {
     public void makeExplode(CallbackInfo ci) {
         if ((Entity) (Object) this instanceof ItemEntity entity) {
             if (entity.getItem().getItem() instanceof DemoniteShard && entity.fallDistance > 5) {
-                entity.level().explode(entity, entity.getX(), entity.getY(), entity.getZ(), 1, false, Level.ExplosionInteraction.NONE);
+                entity.level().explode(entity, entity.getX(), entity.getY(), entity.getZ(), 1, false, Level.ExplosionInteraction.MOB);
             }
 
         }
