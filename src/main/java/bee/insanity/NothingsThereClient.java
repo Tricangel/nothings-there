@@ -43,12 +43,5 @@ public class NothingsThereClient implements ClientModInitializer {
                 }
             }
         });
-
-        ItemTooltipCallback.EVENT.register(((stack, tooltipContext, tooltipFlag, lines) -> {
-            if (stack.has(ModComponents.STACK)) {
-                lines.add(Component.literal(stack.get(ModComponents.STACK).toString()));
-            }
-        }));
-
     }
 }

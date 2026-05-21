@@ -6,4 +6,6 @@ public class DemoniteCage extends Item {
     public DemoniteCage(Properties properties) {
         super(properties);
     }
+
+
 }

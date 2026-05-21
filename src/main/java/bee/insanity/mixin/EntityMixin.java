@@ -1,5 +1,6 @@
 package bee.insanity.mixin;
 
+import bee.insanity.item.DemoniteCage;
 import bee.insanity.item.DemoniteShard;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -8,6 +9,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Entity.class)
 public class EntityMixin {
@@ -21,5 +23,27 @@ public class EntityMixin {
 
         }
     }
+
+    @Inject(method = "isNoGravity", at = @At("HEAD"), cancellable = true)
+    public void makeFloat(CallbackInfoReturnable<Boolean> cir) {
+        if ((Entity) (Object) this instanceof ItemEntity entity) {
+            if (entity.getItem().getItem() instanceof DemoniteCage) {
+                cir.setReturnValue(true);
+            }
+
+        }
+    }
+
+    @Inject(method = "tick", at = @At("HEAD"), cancellable = true)
+    public void tick(CallbackInfo ci) {
+        if ((Entity) (Object) this instanceof ItemEntity entity) {
+            if (entity.getItem().getItem() instanceof DemoniteCage) {
+                
+            }
+
+        }
+    }
+
+
 
 }
