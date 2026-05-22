@@ -1,15 +1,14 @@
 package bee.insanity.registry;
 
 import bee.insanity.NothingsThere;
-import bee.insanity.item.DemoniteCage;
-import bee.insanity.item.DemoniteShard;
-import bee.insanity.item.ModArmorMaterials;
+import bee.insanity.item.*;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SplashPotionItem;
 import net.minecraft.world.item.equipment.ArmorType;
 
 import java.util.function.Function;
@@ -43,6 +42,12 @@ public class ModItems {
 
     public static final Item DEMONITE_SHARD = register("demonite_shard",
             DemoniteShard::new, new Item.Properties());
+
+    public static final Item DEMONITE_POTION = register("demonite_potion",
+            DemonitePotion::new, new Item.Properties());
+
+    public static final Item DEMONITE_SPLASH_POTION = register("demonite_splash_potion",
+            DemoniteSplashPotion::new, new Item.Properties());
 
     public static final Item DEMONITE_CAGE = register("demonite_cage",
             DemoniteCage::new, new Item.Properties());

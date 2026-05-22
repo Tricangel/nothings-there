@@ -2,16 +2,21 @@ package bee.insanity;
 
 import bee.insanity.cca.BooleanComponent;
 import bee.insanity.cca.FourthDimension;
+import bee.insanity.entity.client.ParticleBulletRenderer;
 import bee.insanity.entity.client.TheWatcherRenderer;
 import bee.insanity.packet.FourthDimensionC2SPacket;
+import bee.insanity.packet.TellClientDemonsS2C;
 import bee.insanity.registry.*;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Player;
 
 public class NothingsThereClient implements ClientModInitializer {
     @Override
@@ -19,6 +24,7 @@ public class NothingsThereClient implements ClientModInitializer {
 
         ModEntityModelLayers.registerModelLayers();
         EntityRenderers.register(ModEntityTypes.THE_WATCHER, TheWatcherRenderer::new);
+        EntityRenderers.register(ModEntityTypes.PARTICLE_BULLET, ParticleBulletRenderer::new);
 
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
@@ -43,5 +49,15 @@ public class NothingsThereClient implements ClientModInitializer {
                 }
             }
         });
+
+        ClientPlayNetworking.registerGlobalReceiver(TellClientDemonsS2C.TYPE, (packet, context) -> {
+            ClientLevel level = context.client().level;
+
+            if (level == null) return;
+
+            NothingsThere.players.add((Player) level.getEntity(packet.playerId()));
+
+        });
+
     }
 }

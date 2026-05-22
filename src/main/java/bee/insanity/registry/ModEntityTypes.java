@@ -1,6 +1,7 @@
 package bee.insanity.registry;
 
 import bee.insanity.NothingsThere;
+import bee.insanity.entity.ParticleBullet;
 import bee.insanity.entity.TheWatcher;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.core.Registry;
@@ -16,6 +17,12 @@ public class ModEntityTypes {
             "the_watcher",
             EntityType.Builder.<TheWatcher>of(TheWatcher::new, MobCategory.AMBIENT)
                     .sized(0.75f, 1.75f)
+    );
+
+    public static final EntityType<ParticleBullet> PARTICLE_BULLET = register(
+            "particle_bullet",
+            EntityType.Builder.<ParticleBullet>of(ParticleBullet::new, MobCategory.AMBIENT)
+                    .sized(0.25f, 0.25f)
     );
 
     private static <T extends Entity> EntityType<T> register(String name, EntityType.Builder<T> builder) {
