@@ -1,0 +1,16 @@
+{
+  "bomb.tick": {
+    "subtitle": "sounds.insanity:bomb.tick",
+    "sounds": [
+      "insanity:tick-1",
+      "insanity:tick-2",
+      "insanity:tick-3"
+    ]
+  },
+  "bomb.explode": {
+    "subtitle": "sounds.insanity:bomb.explode",
+    "sounds": [
+      "insanity:explode"
+    ]
+  }
+}

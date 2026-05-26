@@ -90,7 +90,7 @@ public class TheWatcher extends Mob {
 
     @Override
     public boolean checkSpawnRules(LevelAccessor level, EntitySpawnReason spawnReason) {
-        return level.canSeeSky(this.blockPosition());
+        return level.canSeeSky(this.blockPosition()) && random.nextBoolean();
     }
 
     public static void scatterItem(Level level, ItemStack stack, Vec3 pos) {

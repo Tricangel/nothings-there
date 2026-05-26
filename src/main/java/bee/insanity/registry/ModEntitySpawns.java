@@ -11,7 +11,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 public class ModEntitySpawns {
     public static void addSpawns() {
         BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), MobCategory.AMBIENT,
-                ModEntityTypes.THE_WATCHER, 100, 1, 1);
+                ModEntityTypes.THE_WATCHER, 1, 1, 1);
 
         SpawnPlacements.register(ModEntityTypes.THE_WATCHER, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.WORLD_SURFACE_WG, TheWatcher::checkMobSpawnRules);
 

@@ -35,7 +35,7 @@ public abstract class ProjectileMixin {
         AbstractArrow entity = (AbstractArrow) (Object) this;
         ItemStack stack = this.getPickupItem();
         if (stack.getOrDefault(ModComponents.BOOL, false)) {
-            entity.level().explode(entity, entity.getX(), entity.getY(), entity.getZ(), 2, false, Level.ExplosionInteraction.BLOCK);
+            entity.level().explode(entity, entity.getX(), entity.getY(), entity.getZ(), 1, false, Level.ExplosionInteraction.BLOCK);
             stack.remove(ModComponents.BOOL);
             this.setPickupItemStack(stack);
             this.setInGround(false);

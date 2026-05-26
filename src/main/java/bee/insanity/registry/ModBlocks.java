@@ -1,6 +1,7 @@
 package bee.insanity.registry;
 
 import bee.insanity.NothingsThere;
+import bee.insanity.block.AngryAirBlock;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -15,7 +16,7 @@ import java.util.function.Function;
 
 public class ModBlocks {
 
-public static final Block TEST = register("test", Block::new, BlockBehaviour.Properties.of(), true );
+public static final Block ANGRY_AIR = register("block", AngryAirBlock::new, BlockBehaviour.Properties.of().noCollision(), true );
 
     private static Block register(String name, Function<BlockBehaviour.Properties, Block> blockFunction, BlockBehaviour.Properties properties, boolean itemRequired) {
 
@@ -31,5 +32,7 @@ public static final Block TEST = register("test", Block::new, BlockBehaviour.Pro
 
         return Registry.register(BuiltInRegistries.BLOCK, blockKey, block);
     }
+
+    public static void init() {}
 
 }

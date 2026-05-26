@@ -2,7 +2,7 @@
 	"schemaVersion": 1,
 	"id": "insanity",
 	"version": "§k§l1§r.§k§l0§r.§k§l0",
-	"name": "§k Insanity",
+	"name": "§k insanity",
 	"description": "§k Its just getting crazier",
 	"authors": [
 		"You"
@@ -22,6 +22,9 @@
 		],
 		"cardinal-components": [
 			"bee.insanity.registry.ModEntityComponents"
+		],
+		"jei_mod_plugin": [
+			"bee.insanity.compat.JeiPlugin"
 		]
 	},
 	"mixins": [
@@ -30,7 +33,8 @@
 	"custom": {
 		"cardinal-components": [
 			"insanity:in_fourth_dim",
-			"insanity:is_demon"
+			"insanity:is_demon",
+			"insanity:bool"
 		]
 	},
 	"depends": {

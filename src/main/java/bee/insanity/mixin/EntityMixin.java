@@ -1,5 +1,6 @@
 package bee.insanity.mixin;
 
+import bee.insanity.data.DemonPlayers;
 import bee.insanity.entity.ParticleBullet;
 import bee.insanity.item.DemoniteCage;
 import bee.insanity.item.DemoniteShard;
@@ -55,7 +56,7 @@ public abstract class EntityMixin {
     public void makeFloat(CallbackInfoReturnable<Boolean> cir) {
         if ((Entity) (Object) this instanceof ItemEntity entity) {
             if (entity.getItem().getItem() instanceof DemoniteCage) {
-                //cir.setReturnValue(true);
+                cir.setReturnValue(true);
             }
 
         }
@@ -74,7 +75,14 @@ public abstract class EntityMixin {
     @Inject(method = "tick", at = @At("HEAD"), cancellable = true)
     public void tick(CallbackInfo ci) {
         if ((Entity) (Object) this instanceof ItemEntity entity) {
+
             if (entity.getItem().getItem() instanceof DemoniteCage) {
+                Vec3 movement = entity.getDeltaMovement().scale(.1);
+                entity.addDeltaMovement(new Vec3(-movement.x, -movement.y, -movement.z));
+            }
+
+
+            if (entity.getItem().getItem() instanceof DemoniteCage && false) {
                 BlockPos pos = entity.blockPosition();
                 Level level = entity.level();
                 AABB aabb = new AABB(entity.position(), entity.position().subtract(0, 2, 0));
@@ -88,7 +96,7 @@ public abstract class EntityMixin {
                 }
 
                 if (this.tickCount % 3 == 0) {
-                    ParticleBullet bullet = new ParticleBullet(level, ParticleTypes.PORTAL);
+                    ParticleBullet bullet = new ParticleBullet(level, ParticleTypes.PORTAL, false);
                     Random random = new Random();
                     Vec3 vec3 = new Vec3(random.nextFloat(-1f, 1f), -.5, random.nextFloat(-1f, 1f));
                     bullet.copyPosition(entity);

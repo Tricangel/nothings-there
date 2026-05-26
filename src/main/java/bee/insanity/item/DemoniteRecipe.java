@@ -35,7 +35,7 @@ public class DemoniteRecipe extends CustomRecipe {
 
         for (ItemStack stack : input.items()) {
             if (!stack.is(ModItems.DEMONITE_SHARD)) {
-                output = new ItemStack(stack.typeHolder(), 1);
+                output = stack.copyWithCount(1);
                 output.set(ModComponents.BOOL, true);
             }
         }

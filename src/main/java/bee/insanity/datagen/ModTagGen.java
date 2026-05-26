@@ -16,8 +16,6 @@ public class ModTagGen extends FabricTagsProvider.ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        valueLookupBuilder(ModTags.DEMONITE_COMBINABLE)
-                .forceAddTag(ItemTags.ARROWS)
-                .forceAddTag(ItemTags.WEAPON_ENCHANTABLE);
+
     }
 }

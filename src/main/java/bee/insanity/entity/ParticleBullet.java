@@ -1,11 +1,15 @@
 package bee.insanity.entity;
 
+import bee.insanity.NothingsThere;
 import bee.insanity.registry.ModEntityTypes;
+import mod.chloeprime.aaaparticles.api.common.AAALevel;
+import mod.chloeprime.aaaparticles.api.common.ParticleEmitterInfo;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -19,26 +23,33 @@ import net.minecraft.world.phys.Vec3;
 import java.util.Random;
 
 public class ParticleBullet extends Entity {
+    private static final ParticleEmitterInfo PARTICLE = new ParticleEmitterInfo(NothingsThere.id("shatter"));
+    boolean isFlare = false;
+
     ParticleOptions type;
     public ParticleBullet(EntityType<?> type, Level level) {
         super(type, level);
         this.type = ParticleTypes.PORTAL;
     }
 
-    public ParticleBullet(Level level, ParticleOptions particleType) {
+    public ParticleBullet(Level level, ParticleOptions particleType, boolean isFlare) {
         super(ModEntityTypes.PARTICLE_BULLET, level);
         this.type = particleType;
+        this.isFlare = isFlare;
     }
+
 
 
     @Override
     public void tick() {
+
         super.tick();
         if (!level().getBlockState(this.getOnPos()).isAir()) {
+            if (isFlare) level().explode(this, getX(), getY(), getZ(), 1, Level.ExplosionInteraction.BLOCK);
             this.remove(RemovalReason.DISCARDED);
         }
         Vec3 vec = this.getDeltaMovement();
-        this.setDeltaMovement(vec.x(), vec.y -0.1f, vec.z());
+        this.setDeltaMovement(vec.x(), vec.y -0.04, vec.z());
         this.level().addParticle(type, this.getX(), this.getY(), this.getZ(), 0, 0, 0);
         this.move(MoverType.SELF, this.getDeltaMovement().scale(new Random().nextFloat(.05f, .1f)));
     }

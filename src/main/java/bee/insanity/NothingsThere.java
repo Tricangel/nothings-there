@@ -5,15 +5,25 @@ import bee.insanity.packet.FourthDimensionC2SPacket;
 import bee.insanity.packet.TellClientDemonsS2C;
 import bee.insanity.registry.*;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.player.ItemEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.registry.FabricPotionBrewingBuilder;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
+import net.minecraft.core.dispenser.DispenseItemBehavior;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.Identifier;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.DispenserBlock;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.phys.HitResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,6 +52,8 @@ public class NothingsThere implements ModInitializer {
 		ModEntityTypes.registerAttributes();
 		ModEntitySpawns.addSpawns();
 		ModComponents.init();
+		ModBlocks.init();
+		ModSounds.init();
 
 		Registry.register(BuiltInRegistries.RECIPE_TYPE, id("demonite_crafting"), DemoniteRecipe.DemoniteRecipeType.INSTANCE);
 		Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, id("demonite_crafting"), DemoniteRecipe.SERIALIZER);
@@ -54,7 +66,21 @@ public class NothingsThere implements ModInitializer {
 
 
 		});
+
+		DispenserBlock.registerBehavior(ModBlocks.ANGRY_AIR.asItem(), ((source, dispensed) -> {
+			Direction direction = source.state().getValue(BlockStateProperties.FACING);
+			Level level = source.level();
+		if (level.getBlockState(source.pos().relative(direction)).isAir()) {
+			level.setBlockAndUpdate(source.pos().relative(direction), ModBlocks.ANGRY_AIR.defaultBlockState());
+			dispensed.shrink(1);
+		}
+
+            return dispensed;
+        }));
+
 	}
+
+
 
 	public static Identifier id(String name) {
 		return Identifier.fromNamespaceAndPath(MOD_ID, name);

@@ -3,12 +3,16 @@
   "package": "bee.insanity.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
+    "AbstractWindchargeMixin",
     "ConsumableMixin",
     "EntityMixin",
+    "ItemEntityMixin",
     "ItemMixin",
     "ItemStackMixin",
     "PlayerListMixin",
-    "ProjectileMixin"
+    "ProjectileMixin",
+    "SplashPotionMixin",
+    "WindchargeItemMixin"
   ],
   "injectors": {
     "defaultRequire": 1
