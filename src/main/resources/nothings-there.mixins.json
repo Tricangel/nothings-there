@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_25",
   "mixins": [
     "AbstractWindchargeMixin",
+    "BlockBehaviourMixin",
     "ConsumableMixin",
     "EntityMixin",
     "ItemEntityMixin",
@@ -22,6 +23,7 @@
   },
   "client": [
     "FontMixin",
+    "client.ModelBlockRendererMixin",
     "client.ClientSuggestionProviderMixin",
     "client.ContainerScreenMixin",
     "client.GuiMixin",

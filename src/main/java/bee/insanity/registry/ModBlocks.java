@@ -18,6 +18,10 @@ public class ModBlocks {
 
 public static final Block ANGRY_AIR = register("block", AngryAirBlock::new, BlockBehaviour.Properties.of().noCollision(), true );
 
+    public static final Block DEMONITE_PANEL = register("panel", AngryAirBlock::new, BlockBehaviour.Properties.of().noCollision(), true );
+
+
+
     private static Block register(String name, Function<BlockBehaviour.Properties, Block> blockFunction, BlockBehaviour.Properties properties, boolean itemRequired) {
 
         ResourceKey<Block> blockKey = ResourceKey.create(Registries.BLOCK, NothingsThere.id(name));

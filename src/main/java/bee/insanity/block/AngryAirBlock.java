@@ -4,6 +4,7 @@ import bee.insanity.registry.ModItems;
 import bee.insanity.registry.ModSounds;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
@@ -29,7 +30,6 @@ public class AngryAirBlock extends Block {
     public AngryAirBlock(Properties properties) {
         super(properties);
     }
-
 
     @Override
     protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier, boolean isPrecise) {
@@ -64,5 +64,10 @@ public class AngryAirBlock extends Block {
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return context.isHoldingItem(Items.GLASS_BOTTLE) ? Shapes.block() : Shapes.empty();
+    }
+
+    @Override
+    protected boolean skipRendering(BlockState state, BlockState neighborState, Direction direction) {
+        return super.skipRendering(state, neighborState, direction);
     }
 }
