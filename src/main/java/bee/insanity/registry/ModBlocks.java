@@ -2,6 +2,7 @@ package bee.insanity.registry;
 
 import bee.insanity.NothingsThere;
 import bee.insanity.block.AngryAirBlock;
+import bee.insanity.block.DemoniteExplosiveBlock;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -16,9 +17,9 @@ import java.util.function.Function;
 
 public class ModBlocks {
 
-public static final Block ANGRY_AIR = register("block", AngryAirBlock::new, BlockBehaviour.Properties.of().noCollision(), true );
+    public static final Block ANGRY_AIR = register("block", AngryAirBlock::new, BlockBehaviour.Properties.of().noCollision().replaceable(), true );
 
-    public static final Block DEMONITE_PANEL = register("panel", AngryAirBlock::new, BlockBehaviour.Properties.of().noCollision(), true );
+    public static final Block DEMONITE_EXPLOSIVE = register("blocked", DemoniteExplosiveBlock::new, BlockBehaviour.Properties.of(), true );
 
 
 

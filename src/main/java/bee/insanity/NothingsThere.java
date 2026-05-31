@@ -1,5 +1,6 @@
 package bee.insanity;
 
+import bee.insanity.item.DemoniteExplosiveRecipe;
 import bee.insanity.item.DemoniteRecipe;
 import bee.insanity.packet.FourthDimensionC2SPacket;
 import bee.insanity.packet.TellClientDemonsS2C;
@@ -39,9 +40,7 @@ public class NothingsThere implements ModInitializer {
 	public void onInitialize() {
 		FabricPotionBrewingBuilder.BUILD.register(builder -> {
 			builder.addContainer(ModItems.DEMONITE_POTION);
-			builder.addContainer(ModItems.DEMONITE_SPLASH_POTION);
 			builder.addContainerRecipe(Items.POTION, ModItems.DEMONITE_SHARD, ModItems.DEMONITE_POTION);
-			builder.addContainerRecipe(Items.SPLASH_POTION, ModItems.DEMONITE_SHARD, ModItems.DEMONITE_SPLASH_POTION);
 		});
 
 		ModItems.init();
@@ -55,8 +54,12 @@ public class NothingsThere implements ModInitializer {
 		ModBlocks.init();
 		ModSounds.init();
 
+
 		Registry.register(BuiltInRegistries.RECIPE_TYPE, id("demonite_crafting"), DemoniteRecipe.DemoniteRecipeType.INSTANCE);
 		Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, id("demonite_crafting"), DemoniteRecipe.SERIALIZER);
+
+		Registry.register(BuiltInRegistries.RECIPE_TYPE, id("demonite_explosive_crafting"), DemoniteExplosiveRecipe.DemoniteRecipeType.INSTANCE);
+		Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, id("demonite_explosive_crafting"), DemoniteExplosiveRecipe.SERIALIZER);
 
 
 		PayloadTypeRegistry.serverboundPlay().register(FourthDimensionC2SPacket.TYPE, FourthDimensionC2SPacket.CODEC);

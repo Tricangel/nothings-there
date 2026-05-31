@@ -49,8 +49,6 @@ public class ModItems {
     public static final Item DEMONITE_POTION = register("bottle",
             DemonitePotion::new, new Item.Properties().component(DataComponents.CONSUMABLE, Consumables.DEFAULT_DRINK).usingConvertsTo(Items.GLASS_BOTTLE));
 
-    public static final Item DEMONITE_SPLASH_POTION = register("splash_bottle",
-            DemoniteSplashPotion::new, new Item.Properties());
 
     public static final Item DEMONITE_CAGE = register("cage",
             DemoniteCage::new, new Item.Properties());

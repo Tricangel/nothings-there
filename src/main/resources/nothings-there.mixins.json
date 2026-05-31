@@ -4,7 +4,7 @@
   "compatibilityLevel": "JAVA_25",
   "mixins": [
     "AbstractWindchargeMixin",
-    "BlockBehaviourMixin",
+    "PotionContentsMixin",
     "ConsumableMixin",
     "EntityMixin",
     "ItemEntityMixin",
@@ -12,7 +12,6 @@
     "ItemStackMixin",
     "PlayerListMixin",
     "ProjectileMixin",
-    "SplashPotionMixin",
     "WindchargeItemMixin"
   ],
   "injectors": {
@@ -23,12 +22,12 @@
   },
   "client": [
     "FontMixin",
-    "client.ModelBlockRendererMixin",
     "client.ClientSuggestionProviderMixin",
     "client.ContainerScreenMixin",
     "client.GuiMixin",
     "client.ItemInHandRendererMixin",
     "client.ItemRendererMixin",
+    "client.ModelBlockRendererMixin",
     "client.PlayerItemInHandMixin"
   ]
 }
